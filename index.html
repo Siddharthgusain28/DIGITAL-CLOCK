@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="This Digital clock shows the local time of your Device">
+    <title>Digital Clock</title>
+    <link rel="stylesheet" href="/DigitalClock/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="digiWatch">
+            <span class="hours">00</span>
+            <span >:</span>
+            <span class="minute">00</span>
+            <span >:</span>
+            <span class="second">00</span>
+            <span class="zone">AM</span>
+        </div>
+    </div>
+    <script>
+        "use Strict";
+
+        function sethours(){
+            let hou=(new Date().getHours());
+            if(hou<10){document.querySelector(".hours").innerHTML="0"+hou}
+            document.querySelector(".hours").innerHTML=hou
+            if(hou>12){document.querySelector(".hours").innerHTML=`${hou-12}`
+                if((hou-12)<10){document.querySelector(".hours").innerHTML="0"+(hou-12)}
+                document.querySelector(".zone").innerHTML="PM"
+            }
+            else{
+                document.querySelector(".zone").innerHTML="AM"
+            }
+
+
+            
+        }
+        sethours()
+        function setMinute(){
+            let min=new Date().getMinutes();
+            if(min<10){document.querySelector(".minute").innerHTML="0"+min}
+           else{ document.querySelector(".minute").innerHTML=min}
+        }
+        setMinute()
+        function setSec(){
+            let sec=new Date().getSeconds() ;
+            if(sec<10){ document.querySelector(".second").innerHTML="0"+sec;}
+            else{document.querySelector(".second").innerHTML=sec;}
+            
+        }
+        setSec()
+        
+        setInterval(()=>{sethours(),setMinute(),setSec()},1000)
+        
+    </script>
+    
+</body>
+</html>
